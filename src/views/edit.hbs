@@ -1,0 +1,54 @@
+<section id="create-section">
+
+    <h1 class="item">Edit Auction</h1>
+
+    <div class="item padded align-center">
+
+        <form class="layout left large" method="POST" action="/catalog/{{currProduct._id}}/edit">
+
+            <div class="col aligned">
+                <label>
+                    <span>Title</span>
+                    <input type="text" name="title" value="{{currProduct.title}}"></label>
+                <label>
+                    <span>Category</span>
+                    <select name="category">
+                        {{!-- {{#each categoryMethod}}
+                            <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{label}}</option>
+                        {{/each}} --}}
+
+                        <option value="estate">Real Estate</option>
+                        <option value="vehicles">Vehicles</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Image URL</span>
+                    <input type="text" name="image" value="{{currProduct.image}}">
+                </label>
+                <label>
+                    <span>Starting price</span>
+
+                    <!-- If the current auction has a bidder, this input field should be disabled -->
+                   <label><span>Starting price</span><input type="number" name="price" value="{{currProduct.price}}" {{#if hasBids}}disabled="true"{{/if}}></label>
+                </label>
+            </div>
+
+            <div class="content pad-med align-center vertical">
+                <label>
+                    <span>Description</span>
+                    <textarea name="description">{{currProduct.description}}</textarea>
+                </label>
+
+                <div class="align-center">
+                    <input class="action" type="submit" value="Update Listing">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
